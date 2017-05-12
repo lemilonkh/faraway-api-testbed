@@ -1,54 +1,107 @@
 <html>
   <head>
-		<title>Node.js IL Chat</title>
+		<title>FarAway API Testbed</title>
 		<script type="text/javascript" src="/jquery-1.6.4.min.js"></script>
 		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script language="javascript">
 			var socket;
-			
-			$(document).ready(function()
-			{
+
+			$(document).ready(function() {
 				socket = io.connect('/');
 				socket.on('message', function (data) {
 					var content = $('#messages').html() + data + '<br/>';
-					$('#messages').html(content); 
+					$('#messages').html(content);
 				});
-				
-				$('#message').bind('keypress', function(e) {
-					var code = (e.keyCode ? e.keyCode : e.which); 
-					 if(code == 13) { //Enter keycode 
-					   postMessage(); 
-					 } 
 
-				}); 
+				$('#message').bind('keypress', function(e) {
+					var code = (e.keyCode ? e.keyCode : e.which);
+					 if(code == 13) { //Enter keycode
+					   postMessage();
+					 }
+				});
 
 			});
-			
+
 			function postMessage()
 			{
-				if (socket) {
+				if(socket) {
 					socket.emit('message', $('#message').val());
-					$('#message').val('');
+					$('#message').val('Thanks, mate!');
 				}
 			}
 
 		</script>
-		
+
 		<style>
 			body {
-				background-color:#000000;
-				color: green;
+				background-color: teal;
+				color: #eee;
+				padding: 150px;
 			}
 		</style>
-		
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<h2 class="white">Post your messages</h3>
+		<h1>FarAway API Testbed</h1>
+		<div class="btn-toolbar" role="toolbar">
+		   <div class="btn-group">
+				<button
+					type="button"
+					class="btn btn-default"
+					aria-label="Left Align">
+						<i
+							class="mdi mdi-format-align-left"
+							aria-hidden="true">
+						</i>
+				</button>
+				...
+			</div>
+		</div>
+		<h2 class="white">Hurrrrrs</h3>
+		<hr />
+		<div id="messages">
+		</div>
+		<hr />
+		<h2 class="white">Post your hurrrrrs</h3>
 		<table>
 			<tr><td class="white">Your Message:</td><td><input id="message" type="text" size="50"></td></tr>
+			<tr><td class0"white">Your Name:</td><td><input id="name" type="text" size="50"></td></tr>
 		</table>
-		<h2 class="white">Messages</h3>
-		<div id="messages">
+		<div id="uitests">
+			<button type="button" class="btn btn-default" aria-label="Profile">
+				<i class="mdi mdi-account" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default" aria-label="Flask">
+				<i class="mdi mdi-flask" aria-hidden="true"></i>
+				btn
+			</button>
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active">
+					<a href="#">
+						<i class="mdi mdi-home-modern" aria-hidden="true"></i>
+						Home
+						<span class="sr-only"> (current)</span>
+					</a>
+				</li>
+				...
+			</ul>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#">
+						<i class="mdi mdi-home-modern" aria-hidden="true"</i>
+						<span>Home</span>
+					</a>
+				</li>
+				...
+			</ol>
+			<div class="input-group">
+			    <input type="text" class="form-control" placeholder="Search...">
+			    <span class="input-group-btn">
+			        <button class="btn btn-default" type="button" aria-label="Search">
+			            <i class="mdi mdi-magnify" aria-hidden="true"></i>
+			        </button>
+			    </span>
+			</div>
 		</div>
 	</body>
 </html>
