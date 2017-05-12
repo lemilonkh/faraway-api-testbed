@@ -1,4 +1,4 @@
-# # FarAway Server #
+# FarAway Server
 Server backend with the procedural generation tools for the game FarAway by YourWorstFriend.
 
 API testbed as well as ProcGen visualization.
