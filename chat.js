@@ -1,17 +1,21 @@
-var Express = require('express'),
-  app = Express.createServer(),
-	io = require('socket.io').listen(app);
+var http = require('http');
+var express = require('express');
+var app = module.exports.app = express();
 
-io.configure('production', function(){
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+app.listen(1337);
+
+io.configure('production', function() {
   io.enable('browser client etag');
   io.set('log level', 1);
 
   io.set('transports', [
-    'websocket', 
-    'flashsocket', 
-    'htmlfile', 
-    'xhr-polling', 
-    'jsonp-polling', 
+    'websocket',
+    'flashsocket',
+    'htmlfile',
+    'xhr-polling',
+    'jsonp-polling',
   ]);
 });
 
@@ -30,7 +34,7 @@ io.sockets.on('connection', function(client){
     var userName;
 	console.log("user connected!");
 	client.emit('message', 'please insert user name');
-    
+
 	client.on('message', function(message){
         if (!userName) {
 			userName = message;
