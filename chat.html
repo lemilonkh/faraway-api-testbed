@@ -1,7 +1,15 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+	  	<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="device-width, initial-scale=1" />
+
 		<title>FarAway API Testbed</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+
 		<script type="text/javascript" src="/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script language="javascript">
 			var socket;
@@ -14,22 +22,19 @@
 				});
 
 				$('#message').bind('keypress', function(e) {
-					var code = (e.keyCode ? e.keyCode : e.which);
-					 if(code == 13) { //Enter keycode
+					var code = e.keyCode ? e.keyCode : e.which;
+					 if(code == 13) { // Enter keycode
 					   postMessage();
 					 }
 				});
-
 			});
 
-			function postMessage()
-			{
+			function postMessage() {
 				if(socket) {
 					socket.emit('message', $('#message').val());
 					$('#message').val('Thanks, mate!');
 				}
 			}
-
 		</script>
 
 		<style>
