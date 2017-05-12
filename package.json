@@ -2,9 +2,9 @@
   "name": "faraway-server",
   "version": "0.0.1",
   "description": "API Testbed for the FarAway procedural generation API",
-  "main": "chat.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node chat.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.15.2",
